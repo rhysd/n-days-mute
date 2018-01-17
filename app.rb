@@ -31,15 +31,27 @@ before do
 end
 
 get '/auth/twitter/callback' do
-  pp env['omniauth.auth']
-  session[:uid] = env['omniauth.auth']['uid']
+  auth = env['omniauth.auth']
+  pp auth
+  session[:uid] = auth['uid']
+  session[:screen_name] = auth['info']['nickname']
+  session[:user_name] = auth['info']['name']
+  session[:token] = auth['credentials']['token']
+  session[:secret] = auth['credentials']['secret']
   redirect to('/')
 end
 
 get '/auth/failure' do
-  STDERR.puts 'Failed to redirect on authentication'
+  redirect to('/auth_failed.html')
+end
+
+get '/beta_only.html' do
+end
+
+get '/auth_failed.html' do
 end
 
 get '/' do
-  'Hello, world!'
+  return redirect to('/beta_only.html') unless session[:uid] == '119789510'
+  "Hello, #{session[:screen_name]} (#{session[:user_name]})"
 end
