@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
+    <title>Beta: specific user only</title>
+  </head>
+  <body>
+    <button id="sign-in-btn">Sign In with Twitter</button>
+  </body>
+  <script>
+    'use strict';
+    document.getElementById('sign-in-btn').addEventListener('click', () => {
+      window.location = '/auth/twitter';
+    });
+  </script>
+</html>

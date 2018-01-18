@@ -1,2 +1,3 @@
 /.bundle
 /env.sh
+/data.sqlite3
