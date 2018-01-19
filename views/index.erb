@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
-    <title>N-days filter</title>
-  </head>
-  <body>
-      Hello, <%= @screen_name %> (<%= @user_name%>).
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
+        <title>N-days filter</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-spacing: 0px;
+            }
+            table, th, td {
+                padding: 5px;
+                border: 1px solid black;
+            }
+            .send-mute {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 1rem;
+            }
+            .send-mute > * {
+                margin-left: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>Screen Name</th><th>Muted</th><th>Action</th>
+            </tr>
+            <% @muted.each do |m| %>
+                <tr>
+                    <td>@<%= m['screen_name'] %></td><td><%= m['days'].to_i %>days</td><td></td>
+                </tr>
+            <% end %>
+        </table>
+        <form class="send-mute" action="/mute">
+            @<input type="search" autofocus name="screen_name"/>
+            <input type="number" name="days"/>
+            <span>days</span>
+            <button type="submit">MUTE</button>
+        </form>
+    </body>
 </html>

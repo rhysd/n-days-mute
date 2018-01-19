@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118133037) do
+ActiveRecord::Schema.define(version: 20180119171754) do
+
+  create_table "mutes", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "screen_name", null: false
+    t.string "muted_by_user_id", null: false
+    t.integer "days", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "user_id", null: false
