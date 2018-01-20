@@ -27,11 +27,13 @@
     <body>
         <table border="1">
             <tr>
-                <th>Screen Name</th><th>Muted</th><th>Action</th>
+                <th>Screen Name</th><th>Muted Until</th>
             </tr>
             <% @muted.each do |m| %>
                 <tr>
-                    <td>@<%= m['screen_name'] %></td><td><%= m['days'].to_i %>days</td><td></td>
+                    <td>@<%= m['screen_name'] %></td><td><%=
+                        (m['created_at'] + m['days'].to_i.days).strftime('%Y/%m/%d %Z')
+                    %></td>
                 </tr>
             <% end %>
         </table>

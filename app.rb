@@ -1,4 +1,5 @@
 require 'pp'
+require 'active_support/core_ext/numeric/time'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
