@@ -5,3 +5,7 @@ namespace :db do
     require './app'
   end
 end
+
+task :job do
+  require './job'
+end

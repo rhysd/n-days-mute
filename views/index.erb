@@ -31,8 +31,10 @@
             </tr>
             <% @muted.each do |m| %>
                 <tr>
-                    <td>@<%= m['screen_name'] %></td><td><%=
-                        (m['created_at'] + m['days'].to_i.days).strftime('%Y/%m/%d %Z')
+                    <td>
+                        <a target="_blank" rel="noopener" href="https://twitter.com/<%= m['screen_name'] %>">@<%= m['screen_name'] %></a>
+                    </td><td><%=
+                        (m['updated_at'] + m['days'].to_i.days).strftime('%Y/%m/%d %Z')
                     %></td>
                 </tr>
             <% end %>

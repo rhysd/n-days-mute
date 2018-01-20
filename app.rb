@@ -5,19 +5,16 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 require 'omniauth-twitter'
 require 'twitter'
+require './models'
 
 CONSUMER_KEY=ENV['TWITTER_CONSUMER_KEY']
 CONSUMER_SECRET=ENV['TWITTER_CONSUMER_SECRET']
 
 abort 'Twitter consumer key or secret is empty' unless CONSUMER_KEY && CONSUMER_SECRET
 
+# Establish database connectioin
+
 ActiveRecord::Base.establish_connection 'sqlite3:///data.sqlite3'
-
-class User < ActiveRecord::Base
-end
-
-class Mute < ActiveRecord::Base
-end
 
 set :database, {adapter: 'sqlite3', database: 'data.sqlite3'}
 
