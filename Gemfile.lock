@@ -50,7 +50,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    pg (1.0.0)
+    pg (0.21.0)
     public_suffix (3.0.1)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -98,7 +98,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   omniauth-twitter
-  pg
+  pg (~> 0.18)
   rake
   sinatra
   sinatra-activerecord

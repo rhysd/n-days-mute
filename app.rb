@@ -14,9 +14,7 @@ abort 'Twitter consumer key or secret is empty' unless CONSUMER_KEY && CONSUMER_
 
 # Establish database connectioin
 
-ActiveRecord::Base.establish_connection 'sqlite3:///data.sqlite3'
-
-set :database, {adapter: 'sqlite3', database: 'data.sqlite3'}
+set :database_file, 'db/database.yml'
 
 # Authenticate with Twitter account
 # http://recipes.sinatrarb.com/p/middleware/twitter_authentication_with_omniauth

@@ -1,3 +1,4 @@
+require 'yaml'
 require 'active_record'
 require 'active_support/core_ext/numeric/time'
 require './models'
@@ -7,7 +8,8 @@ CONSUMER_SECRET=ENV['TWITTER_CONSUMER_SECRET']
 
 abort 'Twitter consumer key or secret is empty' unless CONSUMER_KEY && CONSUMER_SECRET
 
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'data.sqlite3')
+dbconfig = YAML.load(File.read 'db/database.yml')
+ActiveRecord::Base.establish_connection dbconfig[ENV['RACK_ENV'] || 'development']
 
 now = Time.now
 User.all.each do |muter|
